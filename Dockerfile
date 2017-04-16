@@ -25,8 +25,6 @@ RUN curl -L -o /opt/conda/bin/coursier https://git.io/vgvpD && chmod +x /opt/con
 RUN curl https://raw.githubusercontent.com/alexarchambault/jupyter-scala/master/jupyter-scala | sh
 RUN rm /opt/conda/bin/coursier
 
-COPY ./assets /home/jovyan/assets
- 
 ENV PATH /home/jovyan/.local/bin:${PATH}
 COPY jupyter_notebook_config.py /home/jovyan/.jupyter/
 COPY ipython_config.py /home/jovyan/.ipython/profile_default/

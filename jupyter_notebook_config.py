@@ -19,12 +19,3 @@ c.NotebookApp.port = 8888
 c.NotebookApp.open_browser = False
 c.NotebookApp.trust_xheaders = True
 c.MultiKernelManager.default_kernel_name = 'python2'
-
-# Update args used to start pyspark.SparkContext
-assets_dir = "/home/jovyan/assets"
-args = ("--class org.apache.spark.sql.hive.thriftserver.sparklinedata.HiveThriftServer2"
-       ,"--jars " + os.path.join(assets_dir,"snap-assembly-1.0.0-SNAPSHOT.jar")
-       ,"--verbose" 
-       ,"pyspark-shell"
-       )
-args = " ".join(args)
