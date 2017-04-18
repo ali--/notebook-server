@@ -23,14 +23,14 @@ export PROJECT_ID="$(gcloud config list 2>/dev/null | grep 'project =' | awk '{p
 notebook_arg=""
 if [ -n "${NOTEBOOK_DIR:+x}" ]; then
     notebook_arg="--notebook-dir=${NOTEBOOK_DIR}"
-    if [  "${NOTEBOOK_DIR}" != "/notebooks" ]; then
-      cp -rn /notebooks/*  "${NOTEBOOK_DIR}"
+    if [  "${NOTEBOOK_DIR}" != "/tmp/examples/" ]; then
+      cp -rn /tmp/examples/*  "${NOTEBOOK_DIR}"
     fi
 fi
 
-assets_dir="/home/jovyan/assets"
+shared_dir="/tmp/shared"
 export PYSPARK_SUBMIT_ARGS="--class org.apache.spark.sql.hive.thriftserver.sparklinedata.HiveThriftServer2 \
-       --jars ${assets_dir}/snap-assembly-1.0.0-SNAPSHOT.jar \
+       --jars ${shared_dir}/snap-assembly-1.0.0-SNAPSHOT.jar \
        --verbose \
        pyspark-shell"
 
